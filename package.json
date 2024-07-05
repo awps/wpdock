@@ -1,0 +1,29 @@
+{
+  "name": "wpdock",
+  "version": "1.0.1",
+  "description": "Quickly create a WordPress project with Docker",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "wpdock": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wordpress",
+    "docker"
+  ],
+  "author": "apws",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^9.3.4"
+  },
+  "files": [
+    "index.js",
+    "wpdock.sh",
+    "template-files/"
+  ]
+}
