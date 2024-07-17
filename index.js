@@ -56,7 +56,7 @@ function executeCommand(command, args = [], options = {}) {
                 console.log('Operation cancelled.');
             }
         });
-    } else if (command === 'install') {
+    } else if (command === 'install' || command === 'multisite-install') {
         exec(`${scriptPath} checkinstall`, { cwd: process.cwd() }, (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error checking WordPress installation: ${error.message}`);
@@ -124,6 +124,7 @@ switch (command) {
     case 'delete':
     case 'bash':
     case 'install':
+    case 'multisite-install':
     case 'cron':
         executeCommand(command, commandArgs);
         break;

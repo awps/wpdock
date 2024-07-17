@@ -69,6 +69,15 @@ show_help_install() {
     echo "You will be prompted for site title, admin username, admin password, and admin email."
 }
 
+show_help_multisite_install() {
+    echo "wpdock multisite-install - Install WordPress Multisite if not already installed"
+    echo
+    echo "Usage: wpdock multisite-install"
+    echo
+    echo "This command installs WordPress Multisite if it is not already installed."
+    echo "You will be prompted for site title, admin username, admin password, and admin email."
+}
+
 show_help_cron() {
     echo "wpdock cron - Manage WordPress cron jobs"
     echo
@@ -121,6 +130,17 @@ sitebash() {
 siteinstall() {
     docker-compose exec wordpress bash -c "
     wp core install --url='http://localhost:${WORDPRESS_PORT}' \
+        --title='${WORDPRESS_TITLE}' \
+        --admin_user='${WORDPRESS_ADMIN_USER}' \
+        --admin_password='${WORDPRESS_ADMIN_PASSWORD}' \
+        --admin_email='${WORDPRESS_ADMIN_EMAIL}' \
+        --skip-email \
+        --allow-root"
+}
+
+sitemultisiteinstall() {
+    docker-compose exec wordpress bash -c "
+    wp core multisite-install --url='http://localhost:${WORDPRESS_PORT}' \
         --title='${WORDPRESS_TITLE}' \
         --admin_user='${WORDPRESS_ADMIN_USER}' \
         --admin_password='${WORDPRESS_ADMIN_PASSWORD}' \
@@ -249,7 +269,7 @@ case "$1" in
         else
             copyFiles
             sitego
-            echo "WordPress project initialized. Run 'wpdock install' to install WordPress."
+            echo "WordPress project initialized. Run 'wpdock install' or 'wpdock multisite-install' to install WordPress."
         fi
         ;;
     "bash")
@@ -264,6 +284,13 @@ case "$1" in
             show_help_install
         else
             siteinstall
+        fi
+        ;;
+    "multisite-install")
+        if [[ "$2" == "--help" ]]; then
+            show_help_multisite_install
+        else
+            sitemultisiteinstall
         fi
         ;;
     "checkinstall")

@@ -167,6 +167,16 @@ $ wpdock install
 # WordPress installed successfully.
 ```
 
+#### `wpdock multisite-install`
+
+Install WordPress multisite if not already installed. You will be prompted for site title, admin username, admin password, and admin email.
+
+**Usage:**
+
+```sh
+wpdock multisite-install
+```
+
 #### `wpdock cron`
 
 Manage WordPress cron jobs. This command allows you to start, stop, and manage cron jobs for your WordPress site.
