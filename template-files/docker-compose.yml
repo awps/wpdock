@@ -8,8 +8,8 @@ services:
         ports:
             - ${MYSQL_PORT}:3306
         volumes:
-            - "./.srv/database:/var/lib/mysql"
-            - './custom.ini:/usr/local/etc/php/conf.d/custom.ini'
+            - ${V_MYSQL}
+            - ${V_INI}
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -19,6 +19,7 @@ services:
     wordpress:
         build:
             context: .
+            dockerfile: Dockerfile
             args:
                 - WORDPRESS_IMAGE=${WORDPRESS_IMAGE}
         depends_on:

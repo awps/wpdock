@@ -6,9 +6,14 @@ import path from 'path';
 import inquirer from 'inquirer';
 import dotenv from 'dotenv';
 
-dotenv.config();
-
 const scriptPath = path.join(path.dirname(new URL(import.meta.url).pathname), 'wpdock.sh');
+
+// get the .env file from current project directory under the subfolder .wpdock is the .env file
+const envPath = path.join(process.cwd(), '.wpdock', '.env');
+
+dotenv.config({
+    path: envPath
+});
 
 function ensureExecutable(filePath) {
     try {
@@ -56,7 +61,7 @@ function executeCommand(command, args = [], options = {}) {
                 console.log('Operation cancelled.');
             }
         });
-    } else if (command === 'install' || command === 'multisite-install') {
+    } else if (command === 'install') {
         exec(`${scriptPath} checkinstall`, { cwd: process.cwd() }, (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error checking WordPress installation: ${error.message}`);
@@ -93,6 +98,7 @@ function executeCommand(command, args = [], options = {}) {
                         WORDPRESS_ADMIN_PASSWORD: admin_password,
                         WORDPRESS_ADMIN_EMAIL: admin_email
                     };
+
                     const install = spawn(scriptPath, [command], { stdio: 'inherit', cwd: process.cwd(), env });
 
                     install.on('close', (code) => {
@@ -124,7 +130,7 @@ switch (command) {
     case 'delete':
     case 'bash':
     case 'install':
-    case 'multisite-install':
+    case 'checkinstall':
     case 'cron':
         executeCommand(command, commandArgs);
         break;
