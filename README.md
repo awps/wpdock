@@ -1,9 +1,18 @@
 # wpdock
 
-`wpdock` is a command-line tool to manage your WordPress Docker environment. It provides commands to initialize, start, stop, and manage your WordPress Docker containers, as well as install WordPress, handle cron jobs, and manage the site with WP CLI.
-
 > [!WARNING]
-> This tool is for development purposes and should never be used in a production environment.
+> # 🚧 Beta Warning 🚧
+> 
+> **Warning: This repository is currently in beta.**
+> 
+> Please be aware that this project is still under active development. As a result, the methods, APIs, and overall functionality may change frequently and without notice. I recommend using this project for testing and development purposes only and not in production environments.
+> 
+> I appreciate your interest and contributions! If you encounter any issues or have suggestions, please feel free to open an issue or submit a pull request.
+> 
+> Thank you for your understanding and support!
+
+
+`wpdock` is a command-line tool to manage your WordPress Docker environment. It provides commands to initialize, start, stop, and manage your WordPress Docker containers, as well as install WordPress, handle cron jobs, and manage the site with WP CLI.
 
 ## Installation
 
