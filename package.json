@@ -1,6 +1,6 @@
 {
   "name": "wpdock",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Quickly create a WordPress project with Docker",
   "main": "index.js",
   "type": "module",
