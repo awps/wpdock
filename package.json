@@ -17,7 +17,7 @@
   "author": "apws",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.7",
     "fs-extra": "^11.2.0",
     "inquirer": "^9.3.4"
   },
